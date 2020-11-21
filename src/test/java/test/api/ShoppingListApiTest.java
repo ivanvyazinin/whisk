@@ -15,13 +15,13 @@ public class ShoppingListApiTest {
     ShoppingList shoppingList;
 
     @BeforeEach
-    void initTestData(){
+    void initTestData() {
         shoppingList = new ShoppingList("string", false);
         shoppingList.id = api.createShoppingList(shoppingList).getBody().as(ShoppingListResponse.class).list.id;
     }
 
     @Test
-    void createListTest(){
+    void createListTest() {
 
         ShoppingListResponse response = api.getShoppingList(shoppingList.id).getBody().as(ShoppingListResponse.class);
         assertThat(response.list.id).isEqualTo(shoppingList.id);
@@ -29,7 +29,7 @@ public class ShoppingListApiTest {
     }
 
     @Test
-    void deleteListTest(){
+    void deleteListTest() {
         api.deleteShoppingList(shoppingList.id);
 
         Response response = api.getShoppingList(shoppingList.id);

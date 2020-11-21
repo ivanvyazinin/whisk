@@ -9,21 +9,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static utils.DataGenerator.getRandomName;
 
-public class ShoppingListUiTest extends BaseUiTest{
+public class ShoppingListUiTest extends BaseUiTest {
 
     private ShoppingPage shoppingPage;
     private String listName;
 
     @BeforeEach
-    void prepareTestData(){
-        listName=getRandomName();
+    void prepareTestData() {
+        listName = getRandomName();
         MainPage mainPage = login();
         shoppingPage = mainPage.goToShopping();
         shoppingPage.createList(listName);
     }
 
     @Test
-    void createListTest(){
+    void createListTest() {
         shoppingPage.addItemToList("sugar");
         shoppingPage.addItemToList("milk");
         shoppingPage.addItemToList("eggs");
@@ -40,7 +40,7 @@ public class ShoppingListUiTest extends BaseUiTest{
     }
 
     @Test
-    void deleteListTest(){
+    void deleteListTest() {
         shoppingPage.deleteList(listName);
         shoppingPage.checkIfUserHasList(listName);
     }

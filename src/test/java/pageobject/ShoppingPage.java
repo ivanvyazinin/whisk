@@ -17,7 +17,7 @@ public class ShoppingPage {
     private ElementsCollection itemsList = $$(By.xpath("//span[@data-testid='shopping-list-item-name']"));
     private ShoppingPageListsList shoppingPageListsList;
 
-    public ShoppingPage createList(String name){
+    public ShoppingPage createList(String name) {
         createNewListButton.click();
         newListNameInput.clear();
         newListNameInput.sendKeys(name);
@@ -25,7 +25,7 @@ public class ShoppingPage {
         return new ShoppingPage();
     }
 
-    public ShoppingPage deleteList(String name){
+    public ShoppingPage deleteList(String name) {
         shoppingPageListsList = new ShoppingPageListsList();
         shoppingPageListsList.deleteList(name);
         return new ShoppingPage();
@@ -36,11 +36,11 @@ public class ShoppingPage {
         addItemInput.pressEnter();
     }
 
-    public boolean checkIfItemIsInList(String item){
+    public boolean checkIfItemIsInList(String item) {
         return itemsList.findBy(Condition.text(item)).exists();
     }
 
-    public Boolean checkIfUserHasList(String name){
+    public Boolean checkIfUserHasList(String name) {
         return shoppingPageListsList.checkIfUserHasList(name);
     }
 }

@@ -13,23 +13,23 @@ import static utils.HttpMethods.*;
 public class WhiskApi {
     private WhiskConfig config = getWhiskConfig();
 
-    private String SHOPPING_LIST_ENDPOINT="/list/v2";
+    private String SHOPPING_LIST_ENDPOINT = "/list/v2";
 
-    private Map<String, String> getHeaders(){
+    private Map<String, String> getHeaders() {
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", config.getToken());
         return headers;
     }
 
-    public Response createShoppingList(ShoppingList body){
+    public Response createShoppingList(ShoppingList body) {
         return postRequest(config.getHost() + SHOPPING_LIST_ENDPOINT, getHeaders(), body);
     }
 
-    public Response getShoppingList(String id){
+    public Response getShoppingList(String id) {
         return getRequest(config.getHost() + SHOPPING_LIST_ENDPOINT + "/" + id, getHeaders());
     }
 
-    public Response deleteShoppingList(String id){
+    public Response deleteShoppingList(String id) {
         return deleteRequest(config.getHost() + SHOPPING_LIST_ENDPOINT + "/" + id, getHeaders());
     }
 

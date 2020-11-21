@@ -4,7 +4,7 @@ import org.aeonbits.owner.Config;
 import org.aeonbits.owner.Config.Sources;
 
 @Sources({"classpath:whisk.properties"})
-public interface WhiskConfig extends Config{
+public interface WhiskConfig extends Config {
     @Key("api.host")
     String getHost();
 
