@@ -19,7 +19,6 @@ public class ShoppingPage {
 
     public ShoppingPage createList(String name) {
         createNewListButton.click();
-        newListNameInput.clear();
         newListNameInput.sendKeys(name);
         createButton.click();
         return new ShoppingPage();

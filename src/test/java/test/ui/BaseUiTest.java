@@ -2,7 +2,7 @@ package test.ui;
 
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageobject.LoginPage;
@@ -11,16 +11,15 @@ import pageobject.MainPage;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static env.Configuration.getWhiskConfig;
 import static properties.Constants.TEST_EMAIL;
 import static properties.Constants.TEST_PASSWORD;
 
 public class BaseUiTest {
 
-    @BeforeAll
-    static void init() {
+    @BeforeEach
+    void init() {
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
@@ -40,7 +39,7 @@ public class BaseUiTest {
     protected MainPage login() {
         open(getWhiskConfig().getFrontUrl());
         LoginPage loginPage = new LoginPage();
-        loginPage = loginPage.enterEmail(TEST_EMAIL);
+        loginPage.enterEmail(TEST_EMAIL);
         return loginPage.enterPassword(TEST_PASSWORD);
     }
 
